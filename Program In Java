@@ -1,0 +1,48 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+public class BridgeOfLanka {
+    public static List<Integer> largestSubsequenceDivisibleBy5(int[] stones) {
+        int n = stones.length;
+        int maxLength = 0;
+        List<Integer> result = new ArrayList<>();
+
+        for (int start = 0; start < n; start++) {
+            int currentSum = 0;
+            for (int end = start; end < n; end++) {
+                currentSum += stones[end];
+                if (currentSum % 5 == 0) {
+                    int currentLength = end - start + 1;
+                    if (currentLength > maxLength) {
+                        maxLength = currentLength;
+                        result = new ArrayList<>();
+                        for (int i = start; i <= end; i++) {
+                            result.add(stones[i]);
+                        }
+                    }
+                }
+            }
+        }
+
+        return result;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the number of stones: ");
+        int n = scanner.nextInt();
+        int[] stones = new int[n];
+        System.out.println("Enter the values of the stones:");
+        for (int i = 0; i < n; i++) {
+            stones[i] = scanner.nextInt();
+        }
+        List<Integer> result = largestSubsequenceDivisibleBy5(stones);
+        if (result.isEmpty()) {
+            System.out.println("No subsequence found.");
+        } else {
+            System.out.println("Largest subsequence divisible by 5: " + result);
+        }
+
+        scanner.close();
+    }
+}
