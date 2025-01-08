@@ -1,0 +1,5 @@
+The task is to help Lord Rama's army find a largest consecutive subsequence of stones from a given sequence of stone values such that:
+1. The sum of the subsequence values is divisible by 5.
+2. The subsequence must be contiguous (consecutive stones).
+3. If multiple subsequences have the same sum divisible by 5, choose the longest one.
+4. If no such subsequence exists, return an empty result.
